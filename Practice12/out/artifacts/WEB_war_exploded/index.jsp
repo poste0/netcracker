@@ -12,7 +12,8 @@
     <title>JMS</title>
     <%
       String submit= (String) session.getAttribute("submit");
-      if(submit==null) {
+      String button=request.getParameter("submit");
+      if(button!=null) {
 
 
         ConnectionFactory factory;
@@ -22,7 +23,7 @@
         Connection connection = factory.createConnection();
         Session session1 = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
         MessageProducer producer = session1.createProducer(destination);
-        String msg = (String) session.getAttribute("text");
+        String msg = (String) request.getParameter("input");
         Message message = session1.createTextMessage(msg);
         producer.send(message);
         session.setAttribute("submit",submit);
@@ -33,8 +34,9 @@
   <form id="form" name="form" method="get">
     <p>Введите сообщение</p><br>
     <input type="text" id="input" name="input">
-    <input type="submit" id="submit" name="submit">
+    <input type="submit" id="submit" name="submit" value="Отправить">
 
   </form>
+  <a href="show.jsp">Вывести сообщения</a>
   </body>
 </html>
