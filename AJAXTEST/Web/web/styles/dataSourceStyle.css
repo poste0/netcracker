@@ -1,0 +1,25 @@
+form  {
+    color: green;
+}
+input {
+}
+tb {
+    border: 1px solid green;
+    margin: auto;
+}
+button {
+    color: black;
+}
+tr {
+    color: white;
+}
+th {
+    color: grey;
+}
+td{
+    color:darkgrey;
+}
+a{
+    color: mediumpurple;
+}
+

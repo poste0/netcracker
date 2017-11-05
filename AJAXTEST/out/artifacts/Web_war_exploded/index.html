@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+   
+</head>
+<body>
+<form method="get">
+    <input id="name" name="name" type="text" oninput="f(this.value)" /><br>
+</form>
+<table id="table">
+
+</table>
+</body>
+<footer>
+    <script>
+        var xhr;
+        var table=document.getElementById("table");
+        function f(name){
+            if(name.length>2) {
+                xhr = new XMLHttpRequest();
+                var url = 'index.html?name=' + name;
+                xhr.open('GET', url, true);
+                xhr.onreadystatechange = callback;
+                xhr.send();
+            }
+
+        }
+        function callback(){
+            if(xhr.readyState==4) {
+               clearTable();
+                var resp=JSON.parse(xhr.responseText);
+                createTable(resp);
+                document.body.appendChild(table);
+
+            }
+
+        }
+        function clearTable(){
+            if (table.rows.length>0) {
+                table.style.display='none';
+                for(i=table.rows.length-1;i>=0;i--){
+                    table.rows[i].cells[4].innerHTML='';
+                    table.rows[i].cells[3].innerHTML='';
+                    table.rows[i].cells[2].innerHTML='';
+                    table.rows[i].cells[1].innerHTML='';
+                    table.rows[i].cells[0].innerHTML='';
+
+                }
+            }
+        }
+        function createTable(resp){
+            table.style.display='table';
+            var row=table.insertRow(0);
+            var cell=row.insertCell(0);
+            cell.innerHTML='Номер';
+            var cell=row.insertCell(1);
+            cell.innerHTML='Имя';
+            var cell=row.insertCell(2);
+            cell.innerHTML='Отдел';
+            var cell=row.insertCell(3);
+            cell.innerHTML='Дата';
+            var cell=row.insertCell(4);
+            cell.innerHTML='Департамент';
+            for(i=0;i<resp.length;i++){
+                var row=table.insertRow(i+1);
+                var cell=row.insertCell(0);
+                cell.innerHTML=resp[i].id;
+                var cell=row.insertCell(1);
+                cell.innerHTML=resp[i].name;
+                var cell=row.insertCell(2);
+                cell.innerHTML=resp[i].position;
+                var cell=row.insertCell(3);
+                cell.innerHTML=resp[i].hiredate;
+                var cell=row.insertCell(4);
+                cell.innerHTML=resp[i].dept;
+            }
+
+        }
+
+    </script>
+</footer>
+</html>
