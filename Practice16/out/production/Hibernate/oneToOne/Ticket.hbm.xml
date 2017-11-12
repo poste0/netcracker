@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE hibernate-mapping PUBLIC
+
+
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+
+
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="oneToOne.Ticket" table="Ticket">
+        <id name="number" column="id">
+            <generator class="foreign">
+                <param name="property">student</param>
+            </generator>
+        </id>
+        <property name="course" type="java.lang.Integer">
+            <column name="date"/>
+        </property>
+        <one-to-one name="student" class="oneToOne.Student"/>
+    </class>
+</hibernate-mapping>
