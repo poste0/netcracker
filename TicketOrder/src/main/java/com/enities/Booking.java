@@ -1,6 +1,6 @@
 package com.enities;
 
-import java.util.UUID;
+import com.enities.users.Visitor;
 
 public class Booking extends Order
 {

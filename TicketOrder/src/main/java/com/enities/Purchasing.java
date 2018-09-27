@@ -1,5 +1,7 @@
 package com.enities;
 
+import com.enities.users.Visitor;
+
 public class Purchasing extends Order
 {
 

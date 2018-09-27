@@ -1,9 +1,9 @@
-package notification;
+package com.notification;
 
-import notification.Notification;
-
-public abstract class AbstractNotificationByEmail implements Notification
-{
+/**
+ * Contains email of the user. It's abstract where methos notifyUser is not created.
+ */
+public abstract class AbstractNotificationByEmail implements Notification {
 	public AbstractNotificationByEmail() {
 	}
 

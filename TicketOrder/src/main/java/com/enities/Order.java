@@ -1,4 +1,6 @@
 package com.enities;
+import com.enities.users.Visitor;
+
 import java.util.UUID;
 
 public abstract class Order {
